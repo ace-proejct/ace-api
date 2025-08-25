@@ -15,16 +15,16 @@
 
 ### 2. 성능 최적화
 - **데이터베이스**:
-    - N+1 쿼리 방지
-    - 인덱스 활용
-    - pgvector 쿼리 최적화
+  - N+1 쿼리 방지
+  - 인덱스 활용
+  - pgvector 쿼리 최적화
 - **API 호출**:
-    - Gemini API 레이트 리미팅 준수
-    - 실패시 재시도 로직
-    - 응답 캐싱 활용
+  - Gemini API 레이트 리미팅 준수
+  - 실패시 재시도 로직
+  - 응답 캐싱 활용
 - **파일 처리**:
-    - 음성 파일 크기 제한
-    - 스트리밍 처리
+  - 음성 파일 크기 제한
+  - 스트리밍 처리
 
 ### 3. 에러 핸들링
 - **네트워크 오류**: 타임아웃 설정, 사용자 친화적 메시지
@@ -34,14 +34,14 @@
 
 ### 4. 코드 품질
 - **Spring Boot**:
-    - `@Service`, `@Repository` 레이어 분리
-    - `@Transactional` 적절한 사용
-    - Exception 커스텀 클래스 활용
+  - `@Service`, `@Repository` 레이어 분리
+  - `@Transactional` 적절한 사용
+  - Exception 커스텀 클래스 활용
 - **React/TypeScript**:
-    - Props 타입 정의
-    - Custom Hook 활용
-    - 컴포넌트 재사용성
-    - 메모리 누수 방지 (useEffect cleanup)
+  - Props 타입 정의
+  - Custom Hook 활용
+  - 컴포넌트 재사용성
+  - 메모리 누수 방지 (useEffect cleanup)
 
 ### 5. 접근성 (a11y)
 - **음성 UI**: 시각 장애인을 위한 텍스트 대체

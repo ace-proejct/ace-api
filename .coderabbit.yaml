@@ -3,57 +3,44 @@
 
 language: "ko-KR"  # 한국어로 리뷰 받기
 early_access: false
+
 reviews:
   profile: "chill"  # 너무 엄격하지 않게
   request_changes_workflow: false
   high_level_summary: true
   poem: false  # 시는 생략
   review_status: true
-  collapse_empty_files: false
+  collapse_walkthrough: false
   auto_review:
     enabled: true
-    drafts: false
+    drafts: true
+  # 체크할 파일 패턴
+  path_filters:
+    - "!.coderabbit.yaml"
+    - "!node_modules/**"
+    - "!build/**"
+    - "!dist/**"
+    - "!*.log"
+    - "src/**/*.java"    # Spring Boot
+    - "src/**/*.ts"      # React TypeScript
+    - "src/**/*.tsx"     # React Components
+    - "src/**/*.sql"     # Database scripts
+    - "**/*.y?(a)ml"
 
-# 영어 학습 앱 특화 설정
-tone_instructions: |
-  당신은 Spring Boot와 React를 사용하는 영어 학습 앱의 전문 코드 리뷰어입니다.
-  다음 사항에 특별히 신경써주세요:
-  - API 보안 (사용자 토큰 관리)
-  - 실시간 음성 처리 성능
-  - 데이터베이스 최적화 (대화 기록 저장)
-  - React 컴포넌트 재사용성
-  - 에러 핸들링 (네트워크, API 장애)
-  - 접근성 (시각/청각 장애인 고려)
-  친근하고 건설적인 톤으로 리뷰해주세요.
+# 영어 학습 앱 특화 간단한 톤 설정 (250자 제한)
+tone_instructions: "Spring Boot+React 영어학습앱 전문가로서 API보안, 음성처리성능, DB최적화에 특히 주의하며 친근하고 건설적으로 리뷰해주세요."
 
-# 체크할 파일 패턴
-path_filters:
-  - "!node_modules/**"
-  - "!build/**"
-  - "!dist/**"
-  - "!*.log"
-  - "src/**/*.java"    # Spring Boot
-  - "src/**/*.ts"      # React TypeScript
-  - "src/**/*.tsx"     # React Components
-  - "src/**/*.sql"     # Database scripts
-  - "**/*.yml"
-  - "**/*.yaml"
+# 자동 응답 설정
+chat:
+  auto_reply: false
 
-# 특별히 주의깊게 볼 영역들
-chat_instructions: |
-  영어 학습 앱 개발에서 특히 중요한 부분들:
-  1. STT/TTS API 연동 코드 - 에러 핸들링 철저히
-  2. Gemini API 호출 - 레이트 리미팅 고려
-  3. PostgreSQL 쿼리 - 성능 최적화 필요
-  4. 음성 파일 업로드 - 파일 크기/형식 검증
-  5. 사용자 인증/권한 - 보안 취약점 확인
-  6. 실시간 피드백 - WebSocket 연결 안정성
-
+# 상세 가이드는 지식베이스로 참조
 knowledge_base:
   learnings:
+    scope: "auto"
+  code_guidelines:
     enabled: true
-    scope: "repository"
+    filePatterns:
+      - ".gemini/styleguide.md"
 
-# 자동 요약 설정
-auto_reply: false
 enable_free_tier: true
