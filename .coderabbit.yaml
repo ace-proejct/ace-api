@@ -1,0 +1,46 @@
+# CodeRabbit 설정 - 영어 학습 앱용
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+language: "ko-KR"  # 한국어로 리뷰 받기
+early_access: false
+
+reviews:
+  profile: "chill"  # 너무 엄격하지 않게
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false  # 시는 생략
+  review_status: true
+  collapse_walkthrough: false
+  auto_review:
+    enabled: true
+    drafts: true
+  # 체크할 파일 패턴
+  path_filters:
+    - "!.coderabbit.yaml"
+    - "!node_modules/**"
+    - "!build/**"
+    - "!dist/**"
+    - "!*.log"
+    - "src/**/*.java"    # Spring Boot
+    - "src/**/*.ts"      # React TypeScript
+    - "src/**/*.tsx"     # React Components
+    - "src/**/*.sql"     # Database scripts
+    - "**/*.y?(a)ml"
+
+# 영어 학습 앱 특화 간단한 톤 설정 (250자 제한)
+tone_instructions: "Spring Boot+React 영어학습앱 전문가로서 API보안, 음성처리성능, DB최적화에 특히 주의하며 친근하고 건설적으로 리뷰해주세요."
+
+# 자동 응답 설정
+chat:
+  auto_reply: false
+
+# 상세 가이드는 지식베이스로 참조
+knowledge_base:
+  learnings:
+    scope: "auto"
+  code_guidelines:
+    enabled: true
+    filePatterns:
+      - ".gemini/styleguide.md"
+
+enable_free_tier: true

@@ -1,0 +1,39 @@
+# .gemini/config.yaml - Gemini Code Review 설정
+
+# 기본 동작 설정
+disable: false
+comment_severity_threshold: "MEDIUM"  # 중간 수준 이상만 알림
+max_review_comments: 15  # 너무 많은 코멘트 방지
+
+# PR 오픈시 동작
+pull_request_opened:
+  help: false
+  summary: true      # 요약 생성
+  code_review: true  # 자동 리뷰
+
+# PR 업데이트시 동작
+pull_request_updated:
+  summary: true     # 업데이트마다 요약은 생략
+  code_review: true  # 변경사항만 리뷰
+
+# 무시할 파일 패턴
+ignore_patterns:
+  - "node_modules/**"
+  - "dist/**"
+  - "build/**"
+  - "target/**"        # Maven build
+  - "*.log"
+  - "*.tmp"
+  - ".env*"           # 환경변수 파일
+  - "package-lock.json"
+  - "yarn.lock"
+
+# 주의깊게 볼 파일들
+focus_patterns:
+  - "src/main/java/**/*.java"     # Spring Boot 백엔드
+  - "src/main/resources/**/*.sql" # DB 스크립트
+  - "src/**/*.ts"                 # TypeScript
+  - "src/**/*.tsx"                # React 컴포넌트
+  - "**/*Service.java"            # 서비스 레이어
+  - "**/*Controller.java"         # 컨트롤러
+  - "**/*Repository.java"         # 데이터 레이어
